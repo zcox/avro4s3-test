@@ -43,3 +43,17 @@ case class Bad1(
 object Bad1 {
   implicit val recordFormat = RecordFormat[Bad1]
 }
+
+sealed trait B
+case class B1(s: String) extends B
+case class B2(s: String) extends B
+
+case class Bs(bs: Vector[B])
+
+case class Good4(
+  bs1: Vector[B],
+  bs2: Bs,
+)
+object Good4 {
+  implicit val recordFormat = RecordFormat[Good4]
+}
