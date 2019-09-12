@@ -28,6 +28,14 @@ object Good2 {
   implicit val recordFormat = RecordFormat[Good2]
 }
 
+case class Good3(
+  as1: List[A.AA],
+  as2: As,
+)
+object Good3 {
+  implicit val recordFormat = RecordFormat[Good3]
+}
+
 case class Bad1(
   as1: Vector[A.AA],
   as2: As,
