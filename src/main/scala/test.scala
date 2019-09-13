@@ -36,12 +36,33 @@ object Good3 {
   implicit val recordFormat = RecordFormat[Good3]
 }
 
-case class Bad1(
+/*case class Bad1(
   as1: Vector[A.AA],
   as2: As,
 )
 object Bad1 {
   implicit val recordFormat = RecordFormat[Bad1]
+}*/
+
+case class AWrapper(a: A.AA)
+object AWrapper {
+  implicit val recordFormat = RecordFormat[AWrapper]
+}
+
+case class Good4(
+  as1: List[AWrapper],
+  as2: List[AWrapper],
+)
+object Good4 {
+  implicit val recordFormat = RecordFormat[Good4]
+}
+
+case class Bad2(
+  a: A.AA,
+  as2: List[AWrapper],
+)
+object Bad2 {
+  implicit val recordFormat = RecordFormat[Bad2]
 }
 
 sealed trait B
@@ -50,10 +71,10 @@ case class B2(s: String) extends B
 
 case class Bs(bs: Vector[B])
 
-case class Good4(
+case class Good5(
   bs1: Vector[B],
   bs2: Bs,
 )
-object Good4 {
-  implicit val recordFormat = RecordFormat[Good4]
+object Good5 {
+  implicit val recordFormat = RecordFormat[Good5]
 }
